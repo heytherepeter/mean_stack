@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // locations
+        var Heffolumps = {character: "Heffolumps"}
+        var Eeyore = {character: "Eeyore"}
+        var Kanga = {character: "Kanga"}
+        var Owl = {character: "Owl"}
+        var Christopher_Robin = {character: "Christopher Robin"}
+        var Rabbit = {character: "Rabbit"}
+        var Gopher = {character: "Gopher"}
+        var Piglet = {character: "Piglet"}
+        var Winnie_The_Pooh = {character: "Winnie_The_Pooh"}
+        var Bees = {character: "Bees"}
+        var Tiger = {character: "Tiger"}
+
+        // assignments
+        Eeyore.east = Heffolumps;
+        Heffolumps.west = Kanga.north = Eeyore;
+        Eeyore.south = Christopher_Robin.north = Kanga;
+        Kanga.south = Rabbit.west = Winnie_The_Pooh.north = Owl.east = Christopher_Robin;
+        Christopher_Robin.west = Piglet.north = Owl;
+        Christopher_Robin.east = Bees.north = Gopher.west = Rabbit;
+        Rabbit.east = Gopher;
+        Winnie_The_Pooh.east = Rabbit.south = Bees;
+        Owl.south = Winnie_The_Pooh.west = Piglet;
+        Piglet.east = Tiger.north = Christopher_Robin.south = Bees.west = Winnie_The_Pooh;
+        Winnie_The_Pooh.south = Tiger;
+
+        // gameplay
+        var player = {
+            location: Tiger
+        }
+        function move(direction){
+            console.log(player.location);
+                switch(direction) {
+                    case 'north':
+                        if(player.location.north){
+                            player.location = player.location.north;
+                        } else {
+                            console.log('off the map');
+                        }
+                        break;
+                    case 'south':
+                        if(player.location.south){
+                            player.location = player.location.south;
+                        } else {
+                            console.log('off the map');
+                        }
+                        break;
+                    case 'west':
+                        if(player.location.west){
+                            player.location = player.location.west;
+                        } else {
+                            console.log('off the map');
+                        }
+                        break;
+                        if(player.location.south){
+                            player.location = player.location.south;
+                        } else {
+                            console.log('off the map');
+                        }
+                        break;
+                    case 'east':
+                        if(player.location.east){
+                            player.location = player.location.east;
+                        } else {
+                            console.log('off the map');
+                        }
+                        break;
+                    default:
+                        console.log('not a valid direction');
+                }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
