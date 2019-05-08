@@ -22,7 +22,7 @@ var server = http.createServer(function (request, response){
          });
     }
     else if (request.url === "/cars/new") {
-        fs.readFile('newCar.html', 'utf8', function (errors, contents){
+        fs.readFile('views/newCar.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-type': 'text/html'});
             response.write(contents); 
             response.end();
