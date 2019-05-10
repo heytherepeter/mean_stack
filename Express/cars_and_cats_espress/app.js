@@ -12,14 +12,11 @@ app.get('/', function(request, response) {
 })
 
 app.get("/cars", function (request, response){
-    // hard-coded user data
-    var users_array = [
-        {name: "Michael", email: "michael@codingdojo.com"}, 
-        {name: "Jay", email: "jay@codingdojo.com"}, 
-        {name: "Brendan", email: "brendan@codingdojo.com"}, 
-        {name: "Andrew", email: "andrew@codingdojo.com"}
-    ];
     response.render('cars', {users: users_array});
+})
+
+app.get("/cats", function (request, response){
+    response.render('cats');
 })
 
 
