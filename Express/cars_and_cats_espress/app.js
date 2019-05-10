@@ -16,9 +16,24 @@ app.get("/cars", function (request, response){
 })
 
 app.get("/cats", function (request, response){
-    response.render('cats');
+    var cats_arr = [
+        {name: "lion", age: 10, sleep: ["bed", "closet"]}, 
+        {name: "whiskey", age: 12, sleep: ["couch", "window", "porch"]}, 
+        {name: "bob", age: 10, sleep: ["bed", "hammock"]}, 
+        {name: "bacon", age: 10, sleep: ["loft, attict"]}
+    ];
+    response.render('cats', {cats: cats_arr});
 })
-
+app.get("/cats/:name", function (request, response){
+    var cats_arr = [
+        {name: "lion", age: 10, sleep: ["bed", "closet"]}, 
+        {name: "whiskey", age: 12, sleep: ["couch", "window", "porch"]}, 
+        {name: "bob", age: 10, sleep: ["bed", "hammock"]}, 
+        {name: "bacon", age: 10, sleep: ["loft, attict"]}
+    ];
+    console.log(request.params.name);
+    response.render('catDetails2', {cats: cats_arr, cat_name: request.params.name});
+})
 
 app.listen(8000, function() {
   console.log("listening on port 8000");

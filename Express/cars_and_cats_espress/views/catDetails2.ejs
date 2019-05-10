@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <% for (let cat in cats) { %>
+        <% if (cats[cat].name == cat_name) { %>
+            <h1><%= cats[cat].name %></h1>
+            <img src="/img/<%= cats[cat].name %>.jpeg" alt="<%= cats[cat].name %>" height="200px" width="200px">
+            <p>Age: <%= cats[cat].age %></p>
+            <p>Sleeps at: </p>
+                <% for (let i in cats[cat].sleep) { %>
+                    <p><%= cats[cat].sleep[i] %></p>
+                <% } %>
+            </p>
+        <% } %>
+    <% } %>
+</body>
+</html>

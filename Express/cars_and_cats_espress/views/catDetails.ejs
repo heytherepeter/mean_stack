@@ -7,10 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>crazy cats</h1>
     <% for (let cat in cats) { %>
-        <a href="/cats/<%= cats[cat].name %>"><img src="./img/<%= cats[cat].name %>.jpeg" alt="<%= cats[cat].name %>" height="200px" width="200px"></a>
-        <hr>
+        <%= cat %>
+        <!-- <% if (cats[cat].name == cat_name) { %>
+            <p>Age: <%= cats[cat].age %></p>
+            <p>Sleeps at: 
+                <% for x in cats[cat].sleep %>
+                    <%= x %>
+                <% } %>
+            </p>
+        <% } %> -->
     <% } %>
 </body>
 </html>
