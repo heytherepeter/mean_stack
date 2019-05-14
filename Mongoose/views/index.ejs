@@ -11,6 +11,30 @@
   </head>
   <body>
       <div class="container">
+        <!-- tip to easily see objects printed in full instead of [object Object] -->
+<%- JSON.stringify(messages) %> 
+<!-- based on the structure of your messages, determine how to display them -->
+<% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+ <% } %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for ( let id in users) { %>
+            <tr>
+              <td scope="row"><%= users[id].name %></td>
+              <td><%= users[id].age %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
           <form action="/users" method="post">
         <div class="form-group">
           <label for="formName">Name</label>
