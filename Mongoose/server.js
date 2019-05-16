@@ -46,7 +46,7 @@ app.get('/', function(req, res) {
 // Add User Request 
 app.post('/users', function(req, res) {
     console.log("POST DATA", req.body);
-    // create a new User with the name and age corresponding to those from req.body
+    // create a new User with the name and age corresponding to those from req.bodym
     var user = new User({name: req.body.name, age: req.body.age});
     // Try to save that new user to the database (this is the method that actually inserts into the db) and run a callback function with an error (if any) from the operation.copy
     user.save(function(err) {
