@@ -59,21 +59,19 @@ app.get('/', function(req, res) {
   })
 });
 // Add User Request 
-app.post('/users', function (req, res){
-  var user = new User(req.body);
-  user.save(function(err){
-      if(err){
-          // if there is an error upon saving, use console.log to see what is in the err object 
-          console.log("We have an error!", err);
-          // adjust the code below as needed to create a flash message with the tag and content you would like
-          for(var key in err.errors){
-              req.flash('registration', err.errors[key].message);
-          }
-          // redirect the user to an appropriate route
-          res.redirect('/');
-      }
-      else {
-          res.redirect('/users');
+
+app.post('/users', function(req, res) {
+    console.log("POST DATA", req.body);
+    // create a new User with the name and age corresponding to those from req.bodym
+    var user = new User({name: req.body.name, age: req.body.age});
+    // Try to save that new user to the database (this is the method that actually inserts into the db) and run a callback function with an error (if any) from the operation.copy
+    user.save(function(err) {
+      // if there is an error console.log that something went wrong!
+      if(err) {
+        console.log('something went wrong');
+      } else { // else console.log that we did well and then redirect to the root route
+        console.log('successfully added a user!');
+        res.redirect('/users');
       }
   });
 });
