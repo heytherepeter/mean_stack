@@ -6,8 +6,116 @@ What is a front end framework?
 
 ## Install
 Build NPM first
-ng new public
+>ng new public
+
+create HTTP service file
+>ng g s http
+
+add to node server.js
+> app.use(express.static(__dirname + '/public/dist/public'));
 
 run the angular server
-> ng build -- watch
+> ng build --watch
+
+## Register Service
+`app.module.ts`
+> import { HttpService } from './http.service'; //provider
+
+> import { HttpClientModule } from '@angular/common/http'; //imports
+
+## Dependency Injection
+`http.service.ts`
+```typescript
+import { HttpClient } from '@angular/common/http';
+export class HttpService {
+    constructor(private _http: HttpClient){}
+}
+```
+`app.component.ts`
+```typescript
+import { HttpService } from './http.service';
+export class AppComponent {
+   title = 'app';
+   constructor(private _httpService: HttpService){}
+ }
+```
+## Get data from DB
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class HttpService {
+  constructor(private _http: HttpClient) { 
+    this.getTasks();
+  }
+  getTasks(){
+    let tempObservable = this._http.get('/tasks');
+    tempObservable.subscribe(data => console.log("Got our tasks!", data));
+  }
+  getTaskID(id){
+    let tempObservable = this._http.get(`/tasks${id}`);
+    tempObservable.subscribe(data => console.log("Got our task!", data));
+  }  
+}
+```
+
+## Dom Manipulation
+
+Variables from `app.component.ts` in `app.component.html`
+><img [src]="varNameHere" />
+
+>{{ variableNameHere }}
+```typescript
+import { Component, OnInit } from '@angular/core';
+     
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+     
+export class AppComponent implements OnInit {
+  num: number;
+  randNum: number;
+  str: string;
+  first_name: string;
+     
+  ngOnInit() {
+    this.num = 7;
+    this.randNum = Math.floor( (Math.random()  * 2 ) + 1);
+    this.str = 'Hello Angular Developer!';
+    this.first_name = 'Alpha';
+  }
+}   
+```
+
+```html
+<h3>Value of num is: {{num}}</h3>
+<h3>Value of randNum is: {{randNum}}</h3>
+<h3>{{str}}</h3>
+<input type="text" [value]="first_name" />
+```
+### For Loops and If Statements
+```typescript
+export class AppComponent implements OnInit {
+  snacks: string[];
+  loggedIn: boolean;
+     
+  ngOnInit() {
+    this.snacks = ["vanilla latte with skim milk", "brushed suede", "cookie"];
+    this.loggedIn = true;
+  }
+}   
+```
+```html
+<p *ngIf="loggedIn">You are logged in!</p>
+<p *ngFor="let snack of snacks">{{snack}}</p>
+<p *ngIf="snacks.length < 3">You need more snacks.</p>
+```
+
 

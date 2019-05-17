@@ -4,11 +4,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public/dist/public'));
 
 const Task = require('./contollers/tasks.js');
-app.get('/', (req, res) => {
-    Task.findAll(req, res);
-})
 app.get('/tasks', (req, res) => {
     Task.findAll(req, res);
 })
@@ -24,7 +22,7 @@ app.put('/tasks/:id', (req, res) => {
 app.delete('/tasks/:id', (req, res) => {
     Task.delete(req, res);
 })
-
-app.listen(8000, function() {
-    console.log("listening on port 8000");
+var port = 8000;
+app.listen(port, function() {
+    console.log("listening on port: " + port);
 })

@@ -1,0 +1,17 @@
+{
+  "name": "restful_tasks",
+  "version": "1.0.0",
+  "description": "Restful Tasks Assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Peter ONeill",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.0",
+    "mongoose": "^5.5.9"
+  }
+}
