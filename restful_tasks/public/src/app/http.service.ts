@@ -10,12 +10,11 @@ export class HttpService {
   constructor(private _http: HttpClient) {
   }
   getTasks(){
-    let tempObservable = this._http.get('/tasks');
-    return tempObservable;
+    console.log('getting all tasks')
+    return this._http.get('/tasks');
   }
   getTaskID(id){
-    let tempObservable = this._http.get(`/tasks${id}`);
-    tempObservable.subscribe(data => console.log("Got our task!", data));
+    return this._http.get(`/tasks/${id}`);
   }
 }
 

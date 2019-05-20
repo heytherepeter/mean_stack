@@ -17,7 +17,8 @@ module.exports = {
             let payload = {message: "This works", data: task};
             if(err){
                 console.log(err);
-                payload[errors] = err;
+                payload['errors'] = err;
+                payload['message'] = "error";
             };
             res.json(payload);
         })
