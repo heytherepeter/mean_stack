@@ -22,9 +22,9 @@ run the angular server
 
 ## Register Service
 `app.module.ts`
-> import { HttpService } from './http.service'; //provider
+> import { HttpService } from './http.service'; //add to provider
 
-> import { HttpClientModule } from '@angular/common/http'; //imports
+> import { HttpClientModule } from '@angular/common/http'; // add to imports
 
 ## Dependency Injection
 `http.service.ts`
