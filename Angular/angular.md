@@ -5,6 +5,9 @@ What is a front end framework?
 -Moves processing to client side
 
 ## Install
+global install
+>npm install -g @angular/cli
+
 Build NPM first
 >ng new public
 
