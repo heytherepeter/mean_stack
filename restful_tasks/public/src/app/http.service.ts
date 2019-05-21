@@ -16,6 +16,9 @@ export class HttpService {
   getTaskID(id){
     return this._http.get(`/tasks/${id}`);
   }
+  putEditTaskID(id){
+    return this._http.put(`/tasks/${id}`, data);
+  }
   postNewTask(newTask){
     console.log('created task');
     return this._http.post('/tasks', newTask);

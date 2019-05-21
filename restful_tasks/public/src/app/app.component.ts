@@ -11,15 +11,22 @@ export class AppComponent implements OnInit{
   tasks = [];
   showTask;
   newTask;
-  
+  editTask;
+
   constructor(private _httpService: HttpService){}
   onButtonGetTasks(): void {
     console.log('button pressed')
     this._httpService.getTasks().subscribe(data => this.tasks = data['data']);
   }
   onButtonShowTask(id): void {
-    console.log('button pressed')
     this._httpService.getTaskID(id).subscribe(data => this.showTask = data['data']);
+  }
+  onButtonEditTask(id): void {
+    console.log('button pressed')
+    this._httpService.getTaskID(id, editTask).subscribe(data => {
+      console.log(data)
+      editTask
+    });
   }
   onSubmitFormNewTask() {
     this._httpService.postNewTask(this.newTask).subscribe(data => console.log('created: ', data));
@@ -27,6 +34,7 @@ export class AppComponent implements OnInit{
   }
   ngOnInit(){
     this.newTask = { title: "", description: "" }
+    this.editTask = { title: "", description: "" }
   }
   getTasksFromService(){
     let observable = this._httpService.getTasks();

@@ -11,11 +11,15 @@
 
   <h2>All The Tasks:</h2>
   <button (click)="onButtonGetTasks()">Get Tasks!</button>
-  <li *ngFor="let task of tasks">{{task.title}} - {{task.description}} <button (click)="onButtonShowTask(task._id)">Show Task</button> </li>
-  
+  <li *ngFor="let task of tasks">
+    {{task.title}} - {{task.description}}
+    <button (click)="onButtonShowTask(task._id)">Show Task</button>
+    <button (click)="onButtonEditTask(task._id)">Edit Task</button>
+  </li>
+
   <h2 *ngIf="tasks.length > 0">Most recent task:</h2>
   <li *ngIf="tasks.length > 0">{{tasks[tasks.length - 1].title}} - {{tasks[tasks.length - 1].description}}</li>
-  
+
   <h2>Create New Task</h2>
   <form (submit)="onSubmitFormNewTask()">
     <!-- use the json pipe to see how newTask changes in real time -->
@@ -24,9 +28,9 @@
     <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
     <input type="submit" value="Create Task" />
   </form>
-      
+
   <router-outlet></router-outlet>
-  
-  
+
+
 </div>
 </div>
