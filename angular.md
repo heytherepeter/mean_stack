@@ -43,6 +43,7 @@ export class AppComponent {
  }
 ```
 ## Get data from DB
+`http.service.ts`
 ```typescript
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
