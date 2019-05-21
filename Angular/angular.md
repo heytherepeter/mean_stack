@@ -252,3 +252,12 @@ addTask(newtask){
     return this._http.post('/task', newtask)
 }
 ```
+
+## Multiple components 
+`ng generate component component_name`
+```html
+<div class="root">  <!-- tip: use css to place a border around your different components to better visualize them -->
+    <h1>Welcome to {{ title }}!</h1>
+    <app-task></app-task>     <!-- use the selector of the task component to nest it within the root component -->
+</div>
+```

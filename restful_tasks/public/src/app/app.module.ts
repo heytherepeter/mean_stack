@@ -8,11 +8,13 @@ import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
+import { ShowTaskComponent } from './show-task/show-task.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShowTaskComponent
   ],
   imports: [
     BrowserModule,
