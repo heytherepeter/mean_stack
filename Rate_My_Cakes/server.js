@@ -1,9 +1,13 @@
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/rate_my_cakes')
+
+const bodyParser = require('body-parser');
 
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => res.send('hello world'))
+app.use(bodyParser.json());
+
+require('./config/routes.js')(app)
+
+app.use(express.static(__dirname + '/public/dist/public'));
 
 app.listen(8000)
