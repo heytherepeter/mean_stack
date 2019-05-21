@@ -15,20 +15,32 @@
     {{task.title}} - {{task.description}}
     <button (click)="onButtonShowTask(task._id)">Show Task</button>
     <button (click)="onButtonEditTask(task._id)">Edit Task</button>
+    <button (click)="onButtonDeleteTask(task._id)">Delete Task</button>
   </li>
 
+  <!-- If tasks show most recent task -->
   <h2 *ngIf="tasks.length > 0">Most recent task:</h2>
   <li *ngIf="tasks.length > 0">{{tasks[tasks.length - 1].title}} - {{tasks[tasks.length - 1].description}}</li>
 
-  <h2>Create New Task</h2>
+  <div class="createtask" *ngIf="!editTask">
+    <h2>Create New Task</h2>
   <form (submit)="onSubmitFormNewTask()">
-    <!-- use the json pipe to see how newTask changes in real time -->
-    <p> {{ newTask | json }} </p>
-    <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
-    <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
-    <input type="submit" value="Create Task" />
+  <!-- use the json pipe to see how newTask changes in real time -->
+  <p> {{ newTask | json }} </p>
+  <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+  <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+  <input type="submit" value="Create Task" />
   </form>
-
+</div>
+<div class="edittask" *ngIf="editTask">
+  <h2>Edit Task</h2>
+  <form (submit)="onSubmitEditTask()">
+  <p> {{ editTask | json }} </p>
+  <input type="text" name="editTask.title" [(ngModel)]="editTask.title" />
+  <input type="text" name="editTask.description" [(ngModel)]="editTask.description" />
+  <input type="submit" value="Edit Task" />
+  </form>
+</div>
   <router-outlet></router-outlet>
 
 

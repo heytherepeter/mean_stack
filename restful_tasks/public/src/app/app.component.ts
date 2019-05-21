@@ -21,11 +21,24 @@ export class AppComponent implements OnInit{
   onButtonShowTask(id): void {
     this._httpService.getTaskID(id).subscribe(data => this.showTask = data['data']);
   }
+  onButtonDeleteTask(id): void {
+    console.log('delete button pressed')
+    this._httpService.deleteTaskID(id).subscribe(data => {
+      console.log('task deleted', data)
+    });
+  }
   onButtonEditTask(id): void {
     console.log('button pressed')
-    this._httpService.getTaskID(id, editTask).subscribe(data => {
+    this._httpService.getTaskID(id).subscribe(data => {
       console.log(data)
-      editTask
+      this.editTask = data['data'];
+    });
+  }
+  onSubmitEditTask(): void {
+    console.log('Submitting edit task form')
+    this._httpService.putEditTaskID(this.editTask).subscribe(data => {
+      console.log(data)
+      this.editTask = null;
     });
   }
   onSubmitFormNewTask() {
@@ -34,7 +47,6 @@ export class AppComponent implements OnInit{
   }
   ngOnInit(){
     this.newTask = { title: "", description: "" }
-    this.editTask = { title: "", description: "" }
   }
   getTasksFromService(){
     let observable = this._httpService.getTasks();
