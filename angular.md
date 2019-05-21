@@ -124,33 +124,6 @@ export class AppComponent implements OnInit {
 
 >$ ng build --watch ## run the angular server
 
-## service
-### Creating
->$ ng g s http 
-
-This creates `http.service.ts`
-### Registering
-`app.module.ts`
-```typescript
-import { HttpService } from './http.service';
-@NgModule({
-   ...
-   providers: [HttpService],
-   ...
-})
-```
-Adding HttpClient
-```typescript
-import { HttpClientModule } from '@angular/common/http';
-@NgModule({
-   ...
-   imports: [
-      BrowserModule,
-      HttpClientModule
-   ],
-   ...
-})
-```
 ### Dependency Injection
 `http.service.ts`
 ```typescript

@@ -1,26 +1,12 @@
 # Mean cheat sheet
 
-## Setup
+## Node Setup
 ```bash
 npm init -y
 npm install express --save
 npm install body-parser --save
 npm install mongoose --save
-ng new public
 touch server.js
-```
-`server.js`
-```typescript
-const express = require('express')
-const app = express()
-
-app.use(bodyParser.json());
-
-app.get('/', (req, res) => res.send('hello world'))
-
-app.use(express.static(__dirname + '/public/dist/public'));
-app.listen(8000)
-
 ```
 `mongoose.js`
 ```typescript
@@ -99,5 +85,76 @@ module.exports = {
     }
 }
 ```
+`routes.js`
+```typescript
+const Cake = require('../controllers/cakes.js');
 
- 
+module.exports = function(app) {
+    app.get('/cakes', (req, res) => {
+        Cake.findAll(req, res);
+    })
+    app.post('/cakes', (req, res) => {
+        Cake.create(req, res);
+    })
+    app.get('/cakes/:id', (req, res) => {
+        Cake.findOne(req, res);
+    })
+    app.put('/cakes/:id', (req, res) => {
+        Cake.update(req, res);
+    })
+    app.delete('/cakes/:id', (req, res) => {
+        Cake.delete(req, res);
+    })
+}
+```
+
+ `server.js`
+```typescript
+const bodyParser = require('body-parser');
+const express = require('express')
+
+const app = express()
+
+app.use(bodyParser.json());
+
+require('./config/routes.js')(app)
+
+app.use(express.static(__dirname + '/public/dist/public'));
+
+app.listen(8000)
+
+```
+## Angular Setup
+```bash
+ng new public
+ng g s http
+```
+
+`app.module.ts`
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { FormsModule } from '@angular/forms';
+
+import { HttpService } from './http.service';
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [HttpService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
