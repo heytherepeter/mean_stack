@@ -7,6 +7,7 @@ npm install express --save
 npm install body-parser --save
 npm install mongoose --save
 touch server.js
+touch mongoose.js
 ```
 `mongoose.js`
 ```typescript
@@ -127,6 +128,7 @@ app.listen(8000)
 ## Angular Setup
 ```bash
 ng new public
+cd public
 ng g s http
 ```
 
