@@ -268,3 +268,13 @@ export class ShowTaskComponent implements OnInit {
 
 }
 ```
+## Forms
+```html
+<form (submit)="onSubmitFormNewTask()">
+  <!-- use the json pipe to see how newTask changes in real time -->
+  <p> {{ newTask | json }} </p>
+  <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+  <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+  <input type="submit" value="Create Task" />
+</form>
+```
