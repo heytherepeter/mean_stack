@@ -6,10 +6,10 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'weather channel';
-  constructor(private _httpService: HttpService){}
-  ngOnInit(){
+export class AppComponent implements OnInit {
+  title = 'Dojo Weather Forcast';
+  constructor(private _httpService: HttpService) {}
+  ngOnInit() {
 
   }
 }

@@ -1,4 +1,12 @@
-<p>
-  chicago works!
-</p>
-<router-outlet></router-outlet>
+<div class="container" >
+    <div class="cityinfo" style="display: inline-block; vertical-align: center;">
+        <h1>{{city.name}}</h1>
+        <p>humidity: {{city.main.humidity}}</p>
+        <p>pressure: {{city.main.pressure}}</p>
+        <p>temp: {{city.main.temp}}</p>
+        <p>temp_max: {{city.main.temp_max}}</p>
+        <p>temp_min: {{city.main.temp_min}}</p>
+    </div>
+    <img src="https://media.timeout.com/images/103969387/image.jpg" alt="Chicago Shoreline" height="200">
+
+</div>
